@@ -6,6 +6,7 @@ function Registration() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [isSubmit , setIsSubmit] = useState(false);
+    const [ischeck , setischeck] = useState(false);
 
 // console.log(name);
 // console.log(email);
@@ -14,8 +15,8 @@ function Registration() {
 const buttonClick = (event) => {
     // console.log("mia");
     event.preventDefault();
-    if (!name || !email || !password) {
-        alert("Please fill in all required fields.");
+    if (!ischeck) {
+      
         return; // Exit function if any required field is empty
     }
     const user = {
@@ -35,7 +36,7 @@ const buttonClick = (event) => {
       <h1 className=' font-bold text-white text-5xl p-5'>Registration Card</h1>
 
       <div className=' p-16  flex flex-col justify-center items-center ' >
-<form onSubmit={(event) =>  buttonClick(event) }>
+<form onSubmit={buttonClick}>
     
 <label className="input input-bordered flex items-center gap-2 m-5">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
@@ -57,7 +58,13 @@ const buttonClick = (event) => {
   type="password" className="grow" placeholder="password" required />
 </label>
 
+<div className="flex flex-col text-white">
+<div className="p-4">
+<input onChange={(event) => setischeck(event.target.checked)} type="checkbox" className="text-white"/>{" "}Do you agree with our terms and condritioin
+</div>
+
 <button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>SignUp</button>
+</div>
 {/* <button  className="btn btn-outline bg-blue text-white">Sign Up</button> */}
 </form>
       </div>
@@ -65,7 +72,7 @@ const buttonClick = (event) => {
       <div>
         {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-<dialog id="my_modal_1" className="modal bg-purple-900">
+        isSubmit &&< dialog id="my_modal_1" className="modal bg-purple-900">
   <div className="modal-box bg-fuchsia-700 text-white">
     <h1 className="font-bold text-lg">You have submitted successfully !</h1>
     <p className="py-4">Name : {name}</p>

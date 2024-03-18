@@ -6,13 +6,19 @@ function Registration() {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
 
-console.log(name);
-console.log(email);
-console.log(password);
+// console.log(name);
+// console.log(email);
+// console.log(password);
 
 const buttonClick = (event) => {
     // console.log("mia");
     event.preventDefault();
+    const user = {
+        name: name,
+        email: email,
+        password: password
+    };
+    console.log(user);
 }
 
 
@@ -23,8 +29,8 @@ const buttonClick = (event) => {
       <h1 className=' font-bold text-white text-5xl p-5'>Registration Card</h1>
 
       <div className=' p-16  flex flex-col justify-center items-center ' >
-<form action="">
-    onSubmit={(event) =>  buttonClick(event) }
+<form onSubmit={(event) =>  buttonClick(event) }>
+    
 <label className="input input-bordered flex items-center gap-2 m-5">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" className="w-4 h-4 opacity-70"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z" /></svg>
   <input onChange={(event)=> setName(event.target.value)} type="text" className="grow" placeholder="Username" />
@@ -41,9 +47,10 @@ const buttonClick = (event) => {
   onChange={(event) => setPassword(event.target.value)}
   type="password" className="grow" placeholder="password" />
 </label>
-</form>
 
-<button onClick={() => {buttonClick("g")}} class="btn btn-outline bg-blue text-white">Sign Up</button>
+
+<button  className="btn btn-outline bg-blue text-white">Sign Up</button>
+</form>
       </div>
 
 
